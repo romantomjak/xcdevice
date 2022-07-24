@@ -237,6 +237,10 @@ func (p *InstallationProxy) LookupApplication(bundleID string, attributes []stri
 		return nil, fmt.Errorf("lookup status: %s", resp.Status)
 	}
 
+	if len(resp.LookupResult) == 0 {
+		return nil, fmt.Errorf("bundle does not exist")
+	}
+
 	data, ok := resp.LookupResult[bundleID].(map[string]interface{})
 	if !ok {
 		return nil, fmt.Errorf("lookup error: %v", err)
