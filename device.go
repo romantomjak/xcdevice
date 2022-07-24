@@ -33,8 +33,8 @@ func ListDevices() ([]Device, error) {
 
 	req := listDevicesRequest{
 		MessageType:         "ListDevices",
-		ProgName:            "idevice",
-		ClientVersionString: "idevice-0.0.1",
+		ProgName:            "xcdevice",
+		ClientVersionString: "xcdevice-0.0.1",
 	}
 	if err := conn.Send(req); err != nil {
 		return nil, err

@@ -40,8 +40,8 @@ func ReadPairRecord(device *Device) (*PairRecord, error) {
 
 	req := readPairRecordRequest{
 		MessageType:         "ReadPairRecord",
-		ProgName:            "idevice",
-		ClientVersionString: "idevice-0.0.1",
+		ProgName:            "xcdevice",
+		ClientVersionString: "xcdevice-0.0.1",
 		PairRecordID:        device.SerialNumber,
 	}
 	if err := conn.Send(req); err != nil {

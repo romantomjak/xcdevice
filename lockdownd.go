@@ -106,8 +106,8 @@ func LockdownService(device *Device) (*Lockdown, error) {
 
 	req := connectRequest{
 		MessageType:         "Connect",
-		ProgName:            "idevice",
-		ClientVersionString: "idevice-0.0.1",
+		ProgName:            "xcdevice",
+		ClientVersionString: "xcdevice-0.0.1",
 		DeviceID:            device.DeviceID,
 		PortNumber:          port,
 	}
@@ -169,8 +169,8 @@ func (l *Lockdown) startService(service ServiceName) (net.Conn, error) {
 
 	req := connectRequest{
 		MessageType:         "Connect",
-		ProgName:            "idevice",
-		ClientVersionString: "idevice-0.0.1",
+		ProgName:            "xcdevice",
+		ClientVersionString: "xcdevice-0.0.1",
 		DeviceID:            l.dev.DeviceID,
 		PortNumber:          port,
 	}
@@ -198,7 +198,7 @@ func (l *Lockdown) startService(service ServiceName) (net.Conn, error) {
 
 func (l *Lockdown) startDaemon(service ServiceName) (int, bool, error) {
 	req := startServiceRequest{
-		Label:           "com.idevice",
+		Label:           "com.romantomjak.xcdevice",
 		ProtocolVersion: "2",
 		Request:         "StartService",
 		Service:         string(service),
@@ -253,7 +253,7 @@ func (l *Lockdown) startSession(pair *PairRecord) error {
 	}
 
 	req := startSessionRequest{
-		Label:           "com.idevice",
+		Label:           "com.romantomjak.xcdevice",
 		ProtocolVersion: "2",
 		Request:         "StartSession",
 		HostID:          pair.HostID,
@@ -315,7 +315,7 @@ func (l *Lockdown) stopSession() error {
 	}
 
 	req := stopSessionRequest{
-		Label:           "com.idevice",
+		Label:           "com.romantomjak.xcdevice",
 		ProtocolVersion: "2",
 		Request:         "StopSession",
 		SessionID:       l.sessionID,
